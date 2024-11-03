@@ -1,8 +1,13 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { MainComponent } from './main/main.component';
+import { AppComponent } from './app.component';
 import { ChoiceComponent } from './choice/choice.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule ,Routes} from '@angular/router';
 import { Quiz1Component } from './quiz1/quiz1.component';
 import { Quiz2Component } from './quiz2/quiz2.component';
 import { Quiz3Component } from './quiz3/quiz3.component';
@@ -16,8 +21,10 @@ import { Quiz10Component } from './quiz10/quiz10.component';
 import { Quiz11Component } from './quiz11/quiz11.component';
 import { Quiz12Component } from './quiz12/quiz12.component';
 import { QuizAllComponent } from './quiz-all/quiz-all.component';
+// import { QuizService } from './quiz/quiz.service';
+// import { appConfig } from './app.config';
 
-export const routes: Routes = [
+const AppRoutes: Routes = [
     {path: '', redirectTo: 'main', pathMatch: 'full'},
     {path: 'main', component: MainComponent},
     {path:'choice' , component:ChoiceComponent},
@@ -35,5 +42,38 @@ export const routes: Routes = [
     {path:'quiz11',component:Quiz11Component},
     {path:'quiz12',component:Quiz12Component},
     {path:'quizAll',component:QuizAllComponent},
-    { path: '**', redirectTo: '' } 
+    { path: '**', redirectTo: '' }  // Redirect unknown paths to the main component
 ];
+
+@NgModule({
+    declarations:[
+        AppComponent,
+        MainComponent,
+        ChoiceComponent,
+        QuizComponent,
+        Quiz10Component,
+        Quiz1Component,
+        Quiz2Component,
+        Quiz3Component,
+        Quiz4Component,
+        Quiz5Component,
+        Quiz6Component,
+        Quiz7Component,
+        Quiz8Component,
+        Quiz9Component,
+        Quiz11Component,
+        Quiz12Component,
+        QuizAllComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        RouterModule.forRoot(AppRoutes),
+        
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }
